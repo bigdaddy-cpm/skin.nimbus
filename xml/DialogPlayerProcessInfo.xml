@@ -202,7 +202,15 @@
 					<visible>Player.HasVideo</visible>
 				</control>
 			</control>
-			<include condition="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553)">P3I_PPI_CodecFlags</include>
+			<include condition="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553) + String.IsEqual($VAR[PPICodecLogosLabel],Left)" content="P3I_PPI_CodecFlags">
+				<param name="left" value="50" />
+			</include>
+			<include condition="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553) + String.IsEqual($VAR[PPICodecLogosLabel],Center)" content="P3I_PPI_CodecFlags">
+				<param name="left" value="855" />
+			</include>
+			<include condition="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553) + String.IsEqual($VAR[PPICodecLogosLabel],Right)" content="P3I_PPI_CodecFlags">
+				<param name="left" value="1660" />
+			</include>
 			<control type="grouplist">
 				<left>300</left>
 				<top>-204</top>

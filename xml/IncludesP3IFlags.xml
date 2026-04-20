@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <includes>
     <include name="P3I_PPI_CodecFlags">
+        <param name="left">50</param>
         <control type="group">
-            <left>50</left>
+            <left>$PARAM[left]</left>
             <top>-204</top>
             <width>210</width>
             <height>185</height>

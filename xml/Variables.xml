@@ -786,5 +786,21 @@
 		<value condition="VideoPlayer.SubtitlesEnabled">[B]$INFO[VideoPlayer.SubtitlesLanguage][/B]</value>
 		<value>[B]$LOCALIZE[1223][/B]</value>
 	</variable>
+
+	<variable name="PPICodecLogosLabel">
+		<value condition="Skin.HasSetting(ppi.useleftCodecLogos)">Left</value>
+		<value condition="Skin.HasSetting(ppi.usecenterCodecLogos)">Center</value>
+		<value condition="Skin.HasSetting(ppi.userightCodecLogos)">Right</value>
+		<value>Left</value>
+	</variable>
+
+	<variable name="VS10ModeVar">
+		<value condition="String.Contains(Player.Process(amlogic.vs10.mode),Bypass)">Bypass</value>
+		<value condition="String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)">Dolby Vision</value>
+		<value condition="String.Contains(Player.Process(amlogic.vs10.mode),HDR10)">HDR10</value>
+		<value condition="String.Contains(Player.Process(amlogic.vs10.mode),SDR)">SDR</value>
+		<value condition="!String.IsEmpty(Player.Process(amlogic.vs10.mode))">Available</value>
+		<value>Unavailable</value>
+	</variable>
 	
 </includes>

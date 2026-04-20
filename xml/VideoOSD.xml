@@ -305,7 +305,9 @@
             <onclick>SetProperty(settingslist_content,osd,home)</onclick>
             <onclick>SetProperty(settingslist_header,$LOCALIZE[5],home)</onclick>
             <onclick>ActivateWindow(1101)</onclick>
-            <onleft>715</onleft>
+            <onleft condition="Control.IsVisible(718)">718</onleft>
+            <onleft condition="!Control.IsVisible(718) + Control.IsVisible(717)">717</onleft>
+            <onleft condition="!Control.IsVisible(718) + !Control.IsVisible(717)">715</onleft>
             <onright condition="Control.IsVisible(703)">703</onright>
             <onright condition="!Control.IsVisible(703)">704</onright>
           </control>
@@ -317,6 +319,58 @@
             <font>Font22</font>
             <align>center</align>
             <label></label>
+          </control>
+        </control>
+        <control type="grouplist">
+          <orientation>vertical</orientation>
+          <align>center</align>
+          <itemgap>-3</itemgap>
+          <visible>Player.HasVideo + !VideoPlayer.Content(livetv)</visible>
+          <control type="button" id="717">
+            <font>PlayerIconSmall</font>
+            <textoffsety>7</textoffsety>
+            <align>center</align>
+            <include>PlayerButton</include>
+            <label>&#xECE9;</label>
+            <onclick>SetProperty(PlayerInfoDialogFocus,5553,Home)</onclick>
+            <onclick>ActivateWindow(playerprocessinfo)</onclick>
+            <onleft>715</onleft>
+            <onright condition="Control.IsVisible(718)">718</onright>
+            <onright condition="!Control.IsVisible(718)">716</onright>
+          </control>
+          <control type="label">
+            <top>0</top>
+            <left>0</left>
+            <height>48</height>
+            <width>48</width>
+            <font>Font22</font>
+            <align>center</align>
+            <label>PPI</label>
+          </control>
+        </control>
+        <control type="grouplist">
+          <orientation>vertical</orientation>
+          <align>center</align>
+          <itemgap>-3</itemgap>
+          <visible>Player.HasVideo + !VideoPlayer.Content(livetv) + !String.IsEmpty(Player.Process(amlogic.vs10.mode.raw))</visible>
+          <control type="button" id="718">
+            <font>PlayerIconSmall</font>
+            <textoffsety>7</textoffsety>
+            <align>center</align>
+            <include>PlayerButton</include>
+            <label>&#xED20;</label>
+            <onclick>ActivateWindow(1189)</onclick>
+            <onleft>717</onleft>
+            <onright>716</onright>
+          </control>
+          <control type="label">
+            <top>0</top>
+            <left>0</left>
+            <height>48</height>
+            <width>48</width>
+            <font>Font22</font>
+            <align>center</align>
+            <label>VS10</label>
           </control>
         </control>
       </control>
@@ -638,7 +692,9 @@
             <onclick>SetProperty(settingslist_content,osd,home)</onclick>
             <onclick>SetProperty(settingslist_header,$LOCALIZE[5],home)</onclick>
             <onclick>ActivateWindow(1101)</onclick>
-            <onleft>715</onleft>
+            <onleft condition="Control.IsVisible(718)">718</onleft>
+            <onleft condition="!Control.IsVisible(718) + Control.IsVisible(717)">717</onleft>
+            <onleft condition="!Control.IsVisible(718) + !Control.IsVisible(717)">715</onleft>
             <onright condition="Control.IsVisible(703)">703</onright>
             <onright condition="!Control.IsVisible(703)">704</onright>
           </control>
@@ -650,6 +706,56 @@
             <font>Font12</font>
             <align>center</align>
             <label></label>
+          </control>
+        </control>
+        <control type="grouplist">
+          <orientation>vertical</orientation>
+          <align>center</align>
+          <itemgap>12</itemgap>
+          <width>64</width>
+          <visible>Player.HasVideo + !VideoPlayer.Content(livetv)</visible>
+          <control type="radiobutton" id="717">
+            <include content="OSDButton">
+              <param name="texture" value="osd/fullscreen/buttons/info.png"/>
+            </include>
+            <onclick>SetProperty(PlayerInfoDialogFocus,5553,Home)</onclick>
+            <onclick>ActivateWindow(playerprocessinfo)</onclick>
+            <onleft>715</onleft>
+            <onright condition="Control.IsVisible(718)">718</onright>
+            <onright condition="!Control.IsVisible(718)">716</onright>
+          </control>
+          <control type="label">
+            <top>0</top>
+            <left>0</left>
+            <height>64</height>
+            <width>64</width>
+            <font>Font12</font>
+            <align>center</align>
+            <label>PPI</label>
+          </control>
+        </control>
+        <control type="grouplist">
+          <orientation>vertical</orientation>
+          <align>center</align>
+          <itemgap>12</itemgap>
+          <width>64</width>
+          <visible>Player.HasVideo + !VideoPlayer.Content(livetv) + !String.IsEmpty(Player.Process(amlogic.vs10.mode.raw))</visible>
+          <control type="radiobutton" id="718">
+            <include content="OSDButton">
+              <param name="texture" value="osd/fullscreen/buttons/settings.png"/>
+            </include>
+            <onclick>ActivateWindow(1189)</onclick>
+            <onleft>717</onleft>
+            <onright>716</onright>
+          </control>
+          <control type="label">
+            <top>0</top>
+            <left>0</left>
+            <height>64</height>
+            <width>64</width>
+            <font>Font12</font>
+            <align>center</align>
+            <label>VS10</label>
           </control>
         </control>
       </control>
