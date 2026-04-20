@@ -17,6 +17,22 @@
 				<height>330</height>
 				<texture border="40">dialogs/dialog-bg-nobo.png</texture>
 			</control>
+			<control type="group" visible="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553)">
+				<control type="image">
+					<left>30</left>
+					<top>-560</top>
+					<right>30</right>
+					<height>670</height>
+					<texture border="40">dialogs/dialog-bg-nobo.png</texture>
+				</control>
+				<control type="image">
+					<left>30</left>
+					<top>-560</top>
+					<right>30</right>
+					<height>670</height>
+					<texture colordiffuse="20000000">colors/white.png</texture>
+				</control>
+			</control>
 			<control type="grouplist">
 				<left>50</left>
 				<top>-204</top>
@@ -211,53 +227,386 @@
 			<include condition="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553) + String.IsEqual($VAR[PPICodecLogosLabel],Right)" content="P3I_PPI_CodecFlags">
 				<param name="left" value="1660" />
 			</include>
-			<control type="grouplist">
-				<left>300</left>
-				<top>-204</top>
-				<visible>String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553)</visible>
+			<control type="group" visible="String.IsEqual(Window(Home).Property(PlayerInfoDialogFocus),5553)">
+				<left>50</left>
+				<top>-520</top>
+				<width>1820</width>
+				<height>560</height>
 				<control type="label">
-					<width>1600</width>
-					<height>50</height>
-					<aligny>bottom</aligny>
-					<label>$INFO[Player.Process(videodecoder),[COLOR button_focus]$LOCALIZE[31139]:[/COLOR] ]$VAR[VideoHWDecoder, (,)]</label>
-					<font>font14</font>
+					<left>250</left>
+					<top>10</top>
+					<width>1320</width>
+					<height>48</height>
+					<font>font30_title</font>
+					<align>center</align>
+					<label>[B]Player Process Info[/B]</label>
 					<shadowcolor>black</shadowcolor>
-					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="label">
-					<width>1600</width>
-					<height>50</height>
-					<aligny>bottom</aligny>
-					<label>$INFO[Player.Process(pixformat),[COLOR button_focus]$LOCALIZE[31140]:[/COLOR] ]</label>
-					<font>font14</font>
-					<shadowcolor>black</shadowcolor>
-					<visible>Player.HasVideo</visible>
+					<left>250</left>
+					<top>56</top>
+					<width>1320</width>
+					<height>36</height>
+					<font>font12</font>
+					<align>center</align>
+					<textcolor>grey</textcolor>
+					<label>$INFO[Player.Process(videowidth),,x]$INFO[Player.Process(videoheight)]$INFO[Player.Process(videoscantype), ,]$INFO[Player.Process(videofps),, FPS]$INFO[Player.Process(video.source.hdr.type), [COLOR button_focus]•[/COLOR] ,]</label>
 				</control>
-				<control type="label">
-					<width>1600</width>
-					<height>50</height>
-					<aligny>bottom</aligny>
-					<label>$INFO[Player.Process(deintmethod),[COLOR button_focus]$LOCALIZE[16038]:[/COLOR] ]</label>
-					<font>font14</font>
-					<shadowcolor>black</shadowcolor>
-					<visible>Player.HasVideo</visible>
+				<control type="group">
+					<left>250</left>
+					<top>120</top>
+					<width>480</width>
+					<height>340</height>
+					<control type="label">
+						<width>460</width>
+						<height>40</height>
+						<font>font14_title</font>
+						<label>[B][COLOR button_focus]VIDEO[/COLOR][/B]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>46</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Decoder</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>46</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(videodecoder)]$VAR[VideoHWDecoder, (,)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>84</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Pixel format</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>84</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(pixformat)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>122</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Deinterlace</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>122</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(deintmethod)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>160</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Video mode</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>160</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(videowidth)]x$INFO[Player.Process(videoheight)]$INFO[Player.Process(videoscantype), ,]$INFO[Player.Process(videodar),, AR]$INFO[Player.Process(videofps),, FPS]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>198</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Video codec</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>198</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[VideoPlayer.VideoCodec]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>236</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Live bitrate</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>236</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(video.live.mibit.rate),, Mibit/s]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
 				</control>
-				<control type="label">
-					<width>1600</width>
-					<height>50</height>
-					<aligny>bottom</aligny>
-					<label>$INFO[Player.Process(videowidth),[COLOR button_focus]$LOCALIZE[38031]:[/COLOR] ,x]$INFO[Player.Process(videoheight)]$INFO[Player.Process(videoscantype)]$INFO[Player.Process(videodar),$COMMA , AR]$INFO[Player.Process(videofps),$COMMA , FPS]</label>
-					<font>font14</font>
-					<shadowcolor>black</shadowcolor>
-					<visible>Player.HasVideo</visible>
+				<control type="group">
+					<left>790</left>
+					<top>120</top>
+					<width>480</width>
+					<height>340</height>
+					<control type="label">
+						<width>460</width>
+						<height>40</height>
+						<font>font14_title</font>
+						<label>[B][COLOR button_focus]MORE[/COLOR][/B]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>46</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>VS10 mode</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>46</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$VAR[VS10ModeVar]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>84</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Media source</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>84</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(video.source.hdr.type)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>122</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Display mode</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>122</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(amlogic.displaymode)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>160</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Color space</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>160</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(amlogic.eoft_gamut)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>198</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Audio path</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>198</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(audiochannels)] $INFO[Player.Process(audiodecoder),, ]$INFO[Player.Process(audiobitspersample),, bits]$INFO[Player.Process(audiosamplerate),, Hz]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>236</top>
+						<width>170</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>HDR type raw</label>
+					</control>
+					<control type="label">
+						<left>176</left>
+						<top>236</top>
+						<width>300</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(video.source.hdr.type.raw)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
 				</control>
-				<control type="label">
-					<width>1600</width>
-					<height>50</height>
-					<aligny>bottom</aligny>
-					<label>[COLOR button_focus]$LOCALIZE[460]:[/COLOR] $INFO[Player.Process(audiochannels),,$COMMA ]$INFO[Player.Process(audiodecoder)]$INFO[Player.Process(audiobitspersample),$COMMA , bits]$INFO[Player.Process(audiosamplerate),$COMMA , Hz]</label>
-					<font>font14</font>
-					<shadowcolor>black</shadowcolor>
+				<control type="group">
+					<left>1330</left>
+					<top>120</top>
+					<width>440</width>
+					<height>340</height>
+					<control type="label">
+						<width>420</width>
+						<height>40</height>
+						<font>font14_title</font>
+						<label>[B][COLOR button_focus]SYSTEM[/COLOR][/B]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>46</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Screen</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>46</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.ScreenResolution]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>84</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>System FPS</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>84</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.FPS, , FPS]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>122</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>Memory</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>122</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.Memory(used.percent)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>160</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>CPU</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>160</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.CpuUsage]</label>
+						<visible>System.SupportsCPUUsage</visible>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>160</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.Memory(used.percent)]</label>
+						<visible>!System.SupportsCPUUsage</visible>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>198</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>CPU temp</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>198</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[System.CPUTemperature]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="label">
+						<top>236</top>
+						<width>150</width>
+						<height>34</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<label>AML FPS</label>
+					</control>
+					<control type="label">
+						<left>150</left>
+						<top>236</top>
+						<width>270</width>
+						<height>34</height>
+						<font>font12</font>
+						<label>$INFO[Player.Process(amlogic.video.fps.info)]</label>
+						<shadowcolor>black</shadowcolor>
+					</control>
 				</control>
 			</control>
 			<control type="grouplist">
