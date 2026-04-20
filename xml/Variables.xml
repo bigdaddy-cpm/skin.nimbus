@@ -107,6 +107,37 @@
 		<value condition="Window.IsActive(musicplaylist) | Window.IsActive(videoplaylist)">$INFO[ListItem.Duration]</value>
 		<value>$INFO[ListItem.Label2]</value>
 	</variable>
+	<variable name="FlixListTVTypeVar">
+		<value condition="$EXP[isEpisode]">EPISODE</value>
+		<value condition="$EXP[isSeason]">SEASON</value>
+		<value condition="$EXP[isTVShow]">SERIES</value>
+		<value></value>
+	</variable>
+	<variable name="FlixListTVTitleVar">
+		<value condition="$EXP[isEpisode]">$INFO[ListItem.Season]$INFO[ListItem.Episode,x,]$INFO[ListItem.Title,  ,]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
+	<variable name="FlixListTVSubtitleVar">
+		<value condition="$EXP[isEpisode]">$INFO[ListItem.TVShowTitle]</value>
+		<value condition="$EXP[isSeason]">$INFO[ListItem.TVShowTitle]</value>
+		<value condition="$EXP[isTVShow] + Integer.IsEqual(ListItem.Property(TotalSeasons),1) + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year] / $INFO[ListItem.Property(TotalSeasons),, season]</value>
+		<value condition="$EXP[isTVShow] + Integer.IsGreater(ListItem.Property(TotalSeasons),1) + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year] / $INFO[ListItem.Property(TotalSeasons),, seasons]</value>
+		<value condition="$EXP[isTVShow] + Integer.IsEqual(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, season]</value>
+		<value condition="$EXP[isTVShow] + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, seasons]</value>
+		<value>$INFO[ListItem.Label2]</value>
+	</variable>
+	<variable name="FlixListTVMetaTopVar">
+		<value condition="$EXP[isEpisode]">$INFO[ListItem.Duration]</value>
+		<value>$INFO[ListItem.Property(WatchedEpisodes)]$INFO[ListItem.Property(TotalEpisodes), / ,]</value>
+	</variable>
+	<variable name="FlixListTVMetaBottomVar">
+		<value condition="$EXP[isEpisode] + !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.Premiered]</value>
+		<value condition="$EXP[isEpisode] + String.IsEmpty(ListItem.Premiered) + !String.IsEmpty(ListItem.Rating)">Rating $INFO[ListItem.Rating]</value>
+		<value condition="[$EXP[isTVShow] | $EXP[isSeason]] + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0)">$INFO[ListItem.Property(UnwatchedEpisodes),, remaining]</value>
+		<value condition="$EXP[isTVShow] + !String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
+		<value condition="$EXP[isSeason] + !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.Premiered]</value>
+		<value></value>
+	</variable>
 	<variable name="PlotTextBoxVar">
 		<value condition="!String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
 		<value>$INFO[ListItem.Plot]</value>

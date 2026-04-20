@@ -83,7 +83,193 @@
 
 						[!Container.Content(songs) + !Container.Content(addons) + !Container.Content(playlists) + !Container.Content() + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(musicvideos) + !Container.Content(videos) + !Container.Content(favourites) + !Container.Content(genres)]
 					</visible>
-					<focusedlayout height="list_item_height" width="608" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(games) | Window.IsActive(videoplaylist) | Window.IsActive(musicplaylist)" infoupdate="30">
+					<focusedlayout height="118" width="608" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)" infoupdate="30">
+						<include>VideoTrailerControl</include>
+						<control type="image">
+							<left>0</left>
+							<right>0</right>
+							<bottom>0</bottom>
+							<texture colordiffuse="$VAR[FocusColorTheme]">masks/focus-long.png</texture>
+							<animation effect="fade" start="100" end="40" time="40" condition="!Control.HasFocus(56)">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>15</left>
+							<top>13</top>
+							<width>126</width>
+							<height>92</height>
+							<aspectratio>scale</aspectratio>
+							<texture diffuse="masks/addons.png" fallback="DefaultVideo.png" background="true">$VAR[FlixThumbVar]</texture>
+						</control>
+						<control type="image">
+							<left>151</left>
+							<top>18</top>
+							<width>80</width>
+							<height>24</height>
+							<texture border="12" colordiffuse="33FFFFFF">colors/white.png</texture>
+						</control>
+						<control type="label">
+							<left>166</left>
+							<top>19</top>
+							<width>180</width>
+							<height>22</height>
+							<font>font12</font>
+							<label>$VAR[FlixListTVTypeVar]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<left>151</left>
+							<top>45</top>
+							<width>295</width>
+							<height>32</height>
+							<font>font25_title</font>
+							<label>$VAR[FlixListTVTitleVar]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<scroll>true</scroll>
+							<scrollspeed>120</scrollspeed>
+						</control>
+						<control type="label">
+							<left>151</left>
+							<top>80</top>
+							<width>300</width>
+							<height>22</height>
+							<font>font12</font>
+							<label>$VAR[FlixListTVSubtitleVar]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<scroll>true</scroll>
+							<scrollspeed>120</scrollspeed>
+						</control>
+						<control type="label">
+							<right>18</right>
+							<top>30</top>
+							<width>120</width>
+							<height>28</height>
+							<align>right</align>
+							<font>font23_title</font>
+							<label>$VAR[FlixListTVMetaTopVar]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<right>18</right>
+							<top>64</top>
+							<width>150</width>
+							<height>20</height>
+							<align>right</align>
+							<font>font12</font>
+							<label>$VAR[FlixListTVMetaBottomVar]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="image">
+							<left>151</left>
+							<top>100</top>
+							<right>18</right>
+							<height>1</height>
+							<texture colordiffuse="26FFFFFF">colors/white.png</texture>
+						</control>
+						<control type="image">
+							<left>23</left>
+							<top>20</top>
+							<width>23</width>
+							<height>23</height>
+							<texture colordiffuse="$VAR[FocusedTextColorVar]">$VAR[ListWatchedIconVar]</texture>
+							<animation effect="fade" start="30" end="100" time="300" reversible="false">Focus</animation>
+						</control>
+					</focusedlayout>
+					<itemlayout height="118" width="608" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">
+						<control type="image">
+							<left>0</left>
+							<right>0</right>
+							<bottom>0</bottom>
+							<texture colordiffuse="10FFFFFF">colors/white.png</texture>
+						</control>
+						<control type="image">
+							<left>15</left>
+							<top>13</top>
+							<width>126</width>
+							<height>92</height>
+							<aspectratio>scale</aspectratio>
+							<texture diffuse="masks/addons.png" fallback="DefaultVideo.png" background="true">$VAR[FlixThumbVar]</texture>
+						</control>
+						<control type="image">
+							<left>151</left>
+							<top>18</top>
+							<width>80</width>
+							<height>24</height>
+							<texture border="12" colordiffuse="19FFFFFF">colors/white.png</texture>
+						</control>
+						<control type="label">
+							<left>166</left>
+							<top>19</top>
+							<width>180</width>
+							<height>22</height>
+							<font>font12</font>
+							<label>$VAR[FlixListTVTypeVar]</label>
+							<textcolor>unfocused_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<left>151</left>
+							<top>45</top>
+							<width>295</width>
+							<height>32</height>
+							<font>font25_title</font>
+							<label>$VAR[FlixListTVTitleVar]</label>
+							<textcolor>unfocused_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<left>151</left>
+							<top>80</top>
+							<width>300</width>
+							<height>20</height>
+							<font>font12</font>
+							<label>$VAR[FlixListTVSubtitleVar]</label>
+							<textcolor>unfocused_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<right>18</right>
+							<top>30</top>
+							<width>120</width>
+							<height>28</height>
+							<align>right</align>
+							<font>font23_title</font>
+							<label>$VAR[FlixListTVMetaTopVar]</label>
+							<textcolor>unfocused_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<right>18</right>
+							<top>64</top>
+							<width>150</width>
+							<height>20</height>
+							<align>right</align>
+							<font>font12</font>
+							<label>$VAR[FlixListTVMetaBottomVar]</label>
+							<textcolor>unfocused_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="image">
+							<left>151</left>
+							<top>100</top>
+							<right>18</right>
+							<height>1</height>
+							<texture colordiffuse="14FFFFFF">colors/white.png</texture>
+						</control>
+						<control type="image">
+							<left>23</left>
+							<top>20</top>
+							<width>23</width>
+							<height>23</height>
+							<texture colordiffuse="unfocused_text">$VAR[ListWatchedIconVar]</texture>
+							<animation effect="fade" start="30" end="100" time="300" reversible="false">Focus</animation>
+						</control>
+					</itemlayout>
+					<focusedlayout height="list_item_height" width="608" condition="!Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + [Container.Content(movies) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(games) | Window.IsActive(videoplaylist) | Window.IsActive(musicplaylist)]" infoupdate="30">
 						<include>VideoTrailerControl</include>
 						<control type="image">
 							<left>0</left>
@@ -178,7 +364,7 @@
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
 					</focusedlayout>
-					<itemlayout height="list_item_height" width="608" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(games) | Window.IsActive(videoplaylist) | Window.IsActive(musicplaylist)">
+					<itemlayout height="list_item_height" width="608" condition="!Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + [Container.Content(movies) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(games) | Window.IsActive(videoplaylist) | Window.IsActive(musicplaylist)]">
 						<control type="image">
 							<left>25</left>
 							<top>24</top>
