@@ -94,11 +94,21 @@
 						</control>
 						<control type="image">
 							<left>15</left>
+							<top>24</top>
+							<width>126</width>
+							<height>71</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+							<visible>$EXP[isEpisode]</visible>
+						</control>
+						<control type="image">
+							<left>15</left>
 							<top>13</top>
 							<width>126</width>
 							<height>92</height>
 							<aspectratio>scale</aspectratio>
 							<texture diffuse="masks/addons.png" fallback="DefaultVideo.png" background="true">$VAR[FlixThumbVar]</texture>
+							<visible>!$EXP[isEpisode]</visible>
 						</control>
 						<control type="image">
 							<left>151</left>
@@ -188,11 +198,21 @@
 						</control>
 						<control type="image">
 							<left>15</left>
+							<top>24</top>
+							<width>126</width>
+							<height>71</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+							<visible>$EXP[isEpisode]</visible>
+						</control>
+						<control type="image">
+							<left>15</left>
 							<top>13</top>
 							<width>126</width>
 							<height>92</height>
 							<aspectratio>scale</aspectratio>
 							<texture diffuse="masks/addons.png" fallback="DefaultVideo.png" background="true">$VAR[FlixThumbVar]</texture>
+							<visible>!$EXP[isEpisode]</visible>
 						</control>
 						<control type="image">
 							<left>151</left>
