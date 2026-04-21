@@ -802,5 +802,20 @@
 		<value condition="!String.IsEmpty(Player.Process(amlogic.vs10.mode))">Available</value>
 		<value>Unavailable</value>
 	</variable>
+
+	<variable name="DVELStatusVar">
+		<value condition="String.Contains(Player.Process(video.dovi.el),FEL) | String.Contains(Player.Process(video.dovi.el.type),FEL) | String.Contains(Player.Process(video.dovi.el),fel) | String.Contains(Player.Process(video.dovi.el.type),fel)">[COLOR lightgreen]Yes[/COLOR] FEL</value>
+		<value condition="String.Contains(Player.Process(video.dovi.el),MEL) | String.Contains(Player.Process(video.dovi.el.type),MEL) | String.Contains(Player.Process(video.dovi.el),mel) | String.Contains(Player.Process(video.dovi.el.type),mel)">[COLOR lightgreen]Yes[/COLOR] MEL</value>
+		<value condition="!String.IsEmpty(Player.Process(video.dovi.el))">$INFO[Player.Process(video.dovi.el)]</value>
+		<value condition="!String.IsEmpty(Player.Process(video.dovi.el.type))">$INFO[Player.Process(video.dovi.el.type)]</value>
+		<value>[COLOR grey]Unknown[/COLOR]</value>
+	</variable>
+
+	<variable name="DVProfileStatusVar">
+		<value condition="!String.IsEmpty(Player.Process(video.dovi.profile))">Profile $INFO[Player.Process(video.dovi.profile)]</value>
+		<value condition="!String.IsEmpty(Player.Process(video.dovi.profile.raw))">Profile $INFO[Player.Process(video.dovi.profile.raw)]</value>
+		<value condition="!String.IsEmpty(Player.Process(video.dovi.meta.version))">$INFO[Player.Process(video.dovi.meta.version)]</value>
+		<value>[COLOR grey]Unknown[/COLOR]</value>
+	</variable>
 	
 </includes>
